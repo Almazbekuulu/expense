@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список расходов</title>
+</head>
+<body>
+    <h1>Список расходов</h1>
+
+    <h2>Расходы за все время:</h2>
+    <ul>
+        {% for expense in all_time_expenses %}
+
+        <li>{{ expense }} - <a href="{% url 'edit_expense' expense.id %}">Редактировать</a> | <a href="{% url 'delete_expense' expense.id %}">Удалить</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Расходы за последний месяц:</h2>
+    <ul>
+        {% for expense in last_month_expenses %}
+            <li>{{ expense }} - <a href="{% url 'edit_expense' expense.id %}">Редактировать</a> | <a href="{% url 'delete_expense' expense.id %}">Удалить</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Расходы за последнюю неделю:</h2>
+    <ul>
+        {% for expense in last_week_expenses %}
+          <li>{{ expense }} - <a href="{% url 'edit_expense' expense.id %}">Редактировать</a> | <a href="{% url 'delete_expense' expense.id %}">Удалить</a></li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'add_expense' %}">Добавить расход</a>
+</body>
+</html>
+
+
